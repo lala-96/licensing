@@ -11,7 +11,7 @@ const ModalComponent: React.FC<ModalInterface> = (props) => {
 
     return (
         <>
-            <Modal title="Basic Modal" open={props.show} onCancel={props.cancel} footer={[]}  width={props.width}>
+            <Modal title={props.title} open={props.show} onCancel={props.cancel} footer={[]} width={props.width}>
                 {props.content}
             </Modal>
         </>
