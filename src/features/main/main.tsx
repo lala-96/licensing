@@ -1,6 +1,6 @@
 import React from "react";
 import {Row, Col} from "antd";
-import SmsBalance from "../Sms";
+import SmsBalance from "../smsBalance/Sms";
 import WebFeedback from "../WebFeedback";
 import './main-style.css';
 import ModalComponent from "../../components/modal";

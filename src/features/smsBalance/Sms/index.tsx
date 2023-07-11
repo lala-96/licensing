@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {Row, Col, Form, InputNumber} from "antd";
-import BtnComponent from "../../components/button";
-import NumberInputComponent from "../../components/NumberInput";
+import BtnComponent from "../../../components/button";
+import NumberInputComponent from "../../../components/NumberInput";
 import './sms-style.css'
-import ModalComponent from "../../components/modal";
-import SmsPricing from "../SmsPricing/ined";
-import paypal from '../../assets/img/paypal.svg'
+import ModalComponent from "../../../components/modal";
+import SmsPricing from "../SmsPricing/index";
+import paypal from '../../../assets/img/paypal.svg'
 import {InfoCircleOutlined} from '@ant-design/icons';
 
 const SmsBalance: React.FC = () => {
@@ -53,17 +53,9 @@ const SmsBalance: React.FC = () => {
                     </Col>
                 </Row>
             </Form>
-            <ModalComponent show={show} width='800px'
-                            title={<div style={{
-                                height: '30px',
-                                backgroundColor: '#335c9a',
-                                color: "white",
-                                padding: '10px 10px'
-                            }}>
-                                SMS Pricing</div>}
-                            cancel={() => {
-                                setShow(false)
-                            }} content={<SmsPricing/>}/>
+            <SmsPricing showModal={show} clickCancel={() => {
+                setShow(false)
+            }}/>
         </div>
     )
 }

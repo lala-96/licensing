@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 import {Col, Row} from "antd";
 import BtnComponent from "../../../components/button";
-import ModalComponent from "../../../components/modal";
-import SmsPricing from "../../SmsPricing/ined";
 import ManageDevices from "../manageDevices";
 import LicenseUpgrade from "../licenseUpgrade";
 
@@ -60,16 +58,11 @@ const DviceComponent: React.FC = () => {
                 </Col>
             </Row>
 
-            {modalType === 'devices' ? <ManageDevices isSpin={isLoading} clickCancel={() => setShowModal(false)} showModal={showModal}/>
+            {modalType === 'devices' ?
+                <ManageDevices isSpin={isLoading} clickCancel={() => setShowModal(false)} showModal={showModal}/>
                 :
-                <ModalComponent show={showModal} width='600px' title={<div
-                    style={{height: '30px', backgroundColor: '#335c9a', color: "white", padding: '10px 10px'}}>
-                    License Upgrade </div>} cancel={() => {
-                    setShowModal(false)
-                }} content={<LicenseUpgrade/>}/>
+                <LicenseUpgrade clickCancel={() => setShowModal(false)} showModal={showModal}/>
             }
-
-
         </div>
     )
 }
