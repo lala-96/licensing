@@ -1,21 +1,16 @@
 import React, {useEffect} from "react";
 import {Row, Col, Input, Spin} from "antd";
 import {useState} from "react";
-import axios from "axios";
 import InterfaceSmsPricing from "./type";
 import ModalComponent from "../../../components/modal";
+import qmeterService from "../../../apis/qmeterService";
 
 const SmsPricing: React.FC<InterfaceSmsPricing> = (props) => {
     const [priceList, setPriceList] = useState<any[]>([]);
     const [searchText, setSearchText] = useState<string>('')
 
-    const token = 'Token 05d852a833f2d5c3c9b2133d8fd3eae77b30b9333eb32919d03bfaccf99a84f9';
     useEffect(() => {
-        axios.get('https://apinew.testqmeter.net/api/v1/core/sms-price-list/', {
-            headers: {
-                'Authorization': `${token}`
-            }
-        }).then((data) => {
+        qmeterService.get('/core/sms-price-list/').then((data) => {
             setPriceList([...data.data])
         })
     }, [])

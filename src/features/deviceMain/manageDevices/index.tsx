@@ -1,24 +1,17 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import {Button, Col, Input, Row, Spin, Table, Tag} from "antd";
 import {LogoutOutlined} from "@ant-design/icons";
 import {TableProps} from "antd/es/table";
 import InterfaceManageDevices from "./type";
 import SelectComponent from "../../../components/select";
 import ModalComponent from "../../../components/modal";
+import qmeterService from "../../../apis/qmeterService";
 
 
 const ManageDevices: React.FC<InterfaceManageDevices> = (props) => {
     const [dataList, setDataList] = useState<any[]>([]);
-    const [searchText, setSearchText] = useState<string>('');
-    const [searchName, setSearchName] = useState<any[]>([]);
-    const [searchBranch, setSearchBranch] = useState<any[]>([]);
-    const [searchLogin, setSearchLogin] = useState<any[]>([]);
-    const [searchConnect, setSearchConnect] = useState<any[]>([])
-    const [NameOptions, setNameOptions] = useState<any[]>();
+   const [NameOptions, setNameOptions] = useState<any[]>();
     const [branchOptions, setBranchOptions] = useState<any[]>();
-
-    const [logOut, setLogOut] = useState<any>()
     const columns: any = [
         {
             title: '#',
@@ -106,48 +99,23 @@ const ManageDevices: React.FC<InterfaceManageDevices> = (props) => {
     ];
 
     const handleLogout = (id: any) => {
-        console.log('lala id  ', id)
-        axios.post(`https://apinew.testqmeter.net/api/v1/template/device/logoutall/${id}/`, {status: "logout"}, {
-            headers: {
-                'Authorization': `${token}`
-            }
-        });
-        setLogOut(Math.floor((Math.random())));
+        qmeterService.post(`/template/device/logoutall/${id}/`, {status: "logout"})
     };
 
-    // const TableData = searchText !== '' ? dataList.filter(item => item.name.includes(searchText) || item.user.includes(searchText) || item.branch.includes(searchText)) :
-    //     searchName.length != 0 ? dataList.filter(item => (searchName.includes(item.name))) :
-    //         searchBranch.length != 0 ? dataList.filter(item => (searchBranch.includes(item.branch))) :
-    //             searchLogin.length != 0 ? dataList.filter(item => (searchLogin.includes(item.status || (item.is_offline_mode ? 'Offline mode : on' : 'Offline mode : off')))) :
-    //                 searchConnect.length != 0 ? dataList.filter(item => (item.any_problem ===
-    //                         (searchConnect.includes('Connected') ? true : searchConnect.includes('any problem') ? false : item.any_problem)))
-    //                     : dataList;
-
-    const token = 'Token 05d852a833f2d5c3c9b2133d8fd3eae77b30b9333eb32919d03bfaccf99a84f9';
     useEffect(() => {
-        axios.get('https://apinew.testqmeter.net/api/v1/license/license-in-use/', {
-            headers: {
-                'Authorization': `${token}`
-            }
-        }).then((data) => {
+        qmeterService.get('/license/license-in-use/').then((data) => {
             setDataList([...data.data.data]);
 
         });
+
         //Branch
-        axios.get('https://apinew.testqmeter.net/api/v1/license/license-in-use/?api=branch', {
-            headers: {
-                'Authorization': `${token}`
-            }
-        }).then((data) => {
+        qmeterService.get('/license/license-in-use/?api=branch').then((data) => {
             const branchOpt = data.data.map((item: any) => ({value: item.branch_id, label: item.name}))
             setBranchOptions([...branchOpt])
         });
+
         //username
-        axios.get('https://apinew.testqmeter.net/api/v1/license/license-in-use/?api=username', {
-            headers: {
-                'Authorization': `${token}`
-            }
-        }).then((data) => {
+        qmeterService.get('/license/license-in-use/?api=username').then((data) => {
             const nameOpt = data.data.map((item: any) => ({value: item.username, label: item.username}))
             setNameOptions([...nameOpt])
         });
@@ -159,20 +127,15 @@ const ManageDevices: React.FC<InterfaceManageDevices> = (props) => {
     };
 
     const search = (e: any) => {
-        setSearchText(e.target.value);
         const param = e.target.value;
-        axios.get('https://apinew.testqmeter.net/api/v1/license/license-in-use/', {
-            headers: {
-                'Authorization': `${token}`
-            },
-            params: {
-                search: param
+        qmeterService.get('/license/license-in-use/', {
+                params: {
+                    search: param
+                }
             }
-
-        }).then(data => {
-            console.log('search  ', data.data.data)
+        ).then(data => {
             setDataList([...data.data.data]);
-        })
+        });
     }
     const loginOptions = [
         {label: 'logout', value: 'logout'},
@@ -190,46 +153,29 @@ const ManageDevices: React.FC<InterfaceManageDevices> = (props) => {
 
     const searchForName = (value: []) => {
         const queryString = value.map(userName => `username=${userName}`).join('&');
-        axios.get('https://apinew.testqmeter.net/api/v1/license/license-in-use/?' + queryString, {
-            headers: {
-                'Authorization': `${token}`
-            },
-        }).then(data => {
+
+        qmeterService.get('/license/license-in-use/?' + queryString).then(data => {
             setDataList([...data.data.data]);
-        })
+        });
     };
     const searchForBranch = (value: []) => {
         const queryString = value.map(branch => `branch=${branch}`).join('&');
-        axios.get('https://apinew.testqmeter.net/api/v1/license/license-in-use/?' + queryString, {
-            headers: {
-                'Authorization': `${token}`
-            },
-        }).then(data => {
-            console.log('branch  ', data.data.data)
+        qmeterService.get('/license/license-in-use/?' + queryString).then(data => {
             setDataList([...data.data.data]);
         })
     }
     const searchForLogin = (value: []) => {
         const queryString = value.map(status => `status=${status}`).join('&');
-        axios.get('https://apinew.testqmeter.net/api/v1/license/license-in-use/?' + queryString, {
-            headers: {
-                'Authorization': `${token}`
-            },
-        }).then(data => {
+        qmeterService.get('/license/license-in-use/?' + queryString).then(data => {
             setDataList([...data.data.data]);
         });
     }
 
     const searchForConnect = (value: []) => {
         const queryString = value.map(connection => `connection=${connection}`).join('&');
-        axios.get('https://apinew.testqmeter.net/api/v1/license/license-in-use/?' + queryString, {
-            headers: {
-                'Authorization': `${token}`
-            },
-        }).then(data => {
+        qmeterService.get('/license/license-in-use/?' + queryString).then(data => {
             setDataList([...data.data.data]);
         })
-
     }
 
     return (

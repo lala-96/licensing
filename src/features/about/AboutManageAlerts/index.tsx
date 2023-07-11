@@ -5,26 +5,18 @@ import BtnComponent from "../../../components/button";
 import axios from "axios";
 import AboutAlert from "./type";
 import ModalComponent from "../../../components/modal";
+import qmeterService from "../../../apis/qmeterService";
 
 const AboutManageAlerts: React.FC<AboutAlert> = (props) => {
     const [form] = Form.useForm();
     const [feedbackBalance, setFeedbackBalance] = useState<number>(1)
-    const [smsBalance, setSmsBalance] = useState<number>(1)
-    const token = 'Token 05d852a833f2d5c3c9b2133d8fd3eae77b30b9333eb32919d03bfaccf99a84f9';
-
+    const [smsBalance, setSmsBalance] = useState<number>(1);
 
     const sendManageAlerts = () => {
-        axios.post('https://apinew.testqmeter.net/api/v1/license/manage-alert/',
-            {
-                feedback_alert: feedbackBalance,
-                sms_alert: smsBalance
-            },
-            {
-                headers: {
-                    'Authorization': `${token}`
-                }
-            }
-        ).then();
+        qmeterService.post('/license/manage-alert/', {
+            feedback_alert: feedbackBalance,
+            sms_alert: smsBalance
+        }).then()
         props.setShow();
     }
 
@@ -34,10 +26,7 @@ const AboutManageAlerts: React.FC<AboutAlert> = (props) => {
     const getFeedbackBalance = (e: any) => {
         setFeedbackBalance(e)
     }
-
-
     return (
-
         <ModalComponent show={props.showModal} width='600px'
                         title={<div style={{
                             height: '30px',
@@ -47,7 +36,7 @@ const AboutManageAlerts: React.FC<AboutAlert> = (props) => {
                         }}>
                             SMS Pricing</div>}
                         cancel={props.clickCancel}
-                       content={<div style={{padding: '10px'}}>
+                        content={<div style={{padding: '10px'}}>
                             <Form layout="vertical" form={form} initialValues={props.default}>
                                 <Form.Item label="SMS balance alerts" name='sms_alert'>
                                     <NumberInputComponent min={0} max={1000} onChange={getSmsBalance}

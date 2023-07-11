@@ -1,0 +1,29 @@
+.col-style {
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+}
+
+.span-text {
+    color: #65676b;
+}
+
+.span-position {
+    float: right;
+}
+
+.main-div {
+    backgroundColor: #fff;
+    padding: 0 20px;
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+
+.header-span-style{
+    color: #555;
+    font-weight: 400    ;
+}
+
+.upgrade-btn{
+    border-radius: 0;
+    background-color: #335c9a;
+    color: white !important;
+}

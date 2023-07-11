@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Row, Col, Form, InputNumber} from "antd";
 import BtnComponent from "../../../components/button";
 import NumberInputComponent from "../../../components/NumberInput";
-import './sms-style.css'
+// import './sms-style.css'
 import ModalComponent from "../../../components/modal";
 import SmsPricing from "../SmsPricing/index";
 import paypal from '../../../assets/img/paypal.svg'

@@ -3,6 +3,7 @@ import {Col, Row} from "antd";
 import BtnComponent from "../../../components/button";
 import ManageDevices from "../manageDevices";
 import LicenseUpgrade from "../licenseUpgrade";
+import '../device/style.css'
 
 const DviceComponent: React.FC = () => {
     const [isLoading, setLoading] = useState<boolean>(false);
@@ -22,18 +23,19 @@ const DviceComponent: React.FC = () => {
         setModalType('license');
         setShowModal(true);
     }
-    const list = DeviceInfoList.map(data => <Row
+    const list = DeviceInfoList.map(data =>
+        <Row
         style={{borderBottom: DeviceInfoList.indexOf(data) === (DeviceInfoList.length - 1) ? '' : '1px solid rgba(0,0,0,.1)'}}>
-        <Col span={12} style={{paddingTop: '10px', paddingBottom: '10px'}}>
-            <span style={{color: '#65676b'}}>{data.name}</span>
+        <Col span={12} className='col-style' >
+            <span className='span-text'>{data.name}</span>
         </Col>
-        <Col span={12} style={{paddingTop: '10px', paddingBottom: '10px'}}>
-            <span style={{float: 'right', color: '#65676b'}}>{data.value}</span>
+        <Col span={12} className='col-style'>
+            <span className='span-position span-text'>{data.value}</span>
         </Col>
     </Row>)
 
     return (
-        <div style={{backgroundColor: "#fff", padding: '0 20px', border: '1px solid rgba(0,0,0,.1)'}}>
+        <div className='main-div'>
             <Row style={{
                 borderBottom: '1px solid rgba(0,0,0,.1)',
                 paddingTop: '10px',
@@ -41,7 +43,7 @@ const DviceComponent: React.FC = () => {
                 marginBottom: '20px'
             }}>
                 <Col span={24}>
-                    <span style={{color: '#555', fontWeight: '400'}}>Device Licence information</span>
+                    <span className='header-span-style'>Device Licence information</span>
                 </Col>
             </Row>
             {list}
@@ -51,9 +53,10 @@ const DviceComponent: React.FC = () => {
                                   loading={isLoading}/>
                 </Col>
                 <Col span={5}>
-                    <BtnComponent text='Upgrade license'
-                                  style={{borderRadius: '0', backgroundColor: '#335c9a', color: 'white'}}
-                                  onClick={showLicense}
+                    <BtnComponent
+                        text='Upgrade license'
+                        onClick={showLicense}
+                        className='upgrade-btn'
                     />
                 </Col>
             </Row>

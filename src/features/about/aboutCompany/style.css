@@ -1,0 +1,41 @@
+.main-div {
+    background-color: #ffffff;
+    padding: 0 20px;
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+
+.header-row {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-style {
+    background-color: #335c9a;
+    float: right;
+    border-radius: 0;
+    color: #ffffff;
+}
+
+.upload-row {
+    height: 200px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.col-style{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.border-row{
+    display: inline-block;
+    borderBottom: 1px solid rgba(0,0,0,.1) !important;
+}
+.row-margin{
+    margin-bottom: 38px;
+}
+/*span{*/
+/*    color: #65676b;*/
+/*}*/

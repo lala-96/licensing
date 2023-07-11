@@ -1,23 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {Button, Table, Tag} from "antd";
-import {LogoutOutlined} from "@ant-design/icons";
 import axios from "axios";
 import device from '../../assets/img/phone.svg'
 import sms from '../../assets/img/sms.svg'
 import feedback from '../../assets/img/feedback.svg'
+import qmeterService from "../../apis/qmeterService";
 
 const PaymentHistory: React.FC = () => {
     const [paymentList, setPaymentList] = useState<any[]>([]);
-    // const [url,setUrl] =useState<string>('')
     const getLink = () => {
-        axios.get('https://apinew.testqmeter.net/api/v1/license/invoice/feedback/327/',
-            {
-                headers: {
-                    'Authorization': `${token}`
-                }
-            }
-        ).then((data) => {
-            console.log('file data  ', data.data);
+        qmeterService.get('/license/invoice/feedback/327/').then((data) => {
             const url = data.data.file
             const link = document.createElement("a")
             const currentDate = new Date()
@@ -32,12 +24,8 @@ const PaymentHistory: React.FC = () => {
 
             document.body.removeChild(link)
             URL.revokeObjectURL(url)
-
-
         })
     }
-
-    // console.log('setLink = ', url)
     const columns: any = [
         {
             title: '#',
@@ -117,17 +105,10 @@ const PaymentHistory: React.FC = () => {
         },
     ];
 
-    const token = 'Token 05d852a833f2d5c3c9b2133d8fd3eae77b30b9333eb32919d03bfaccf99a84f9';
-
     useEffect(() => {
-        axios.get('https://apinew.testqmeter.net/api/v1/license/all-history/?page=1&page_size=20&search=', {
-            headers: {
-                'Authorization': `${token}`
-            }
-        }).then((data) => {
-            console.log('my new data   ', data.data);
+        qmeterService.get('/license/all-history/?page=1&page_size=20&search=').then((data) => {
             setPaymentList([...data.data]);
-        })
+        });
     }, []);
 
     return (

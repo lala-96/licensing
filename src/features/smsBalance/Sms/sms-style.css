@@ -1,12 +1,12 @@
-ROW Col {
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-
-.text-color{
+.text-color {
     color: #65676b;
 }
 
-.header-text-color{
+.header-text-color {
     color: #555;
+}
+
+.col-style-sms {
+    paddingTop: 10px !important;
+    paddingBottom: 10px !important;
 }
