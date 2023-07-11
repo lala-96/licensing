@@ -5,8 +5,9 @@ import './web-style.css'
 import SelectComponent from "../../components/select";
 import './web-style.css'
 import paypal from "../../assets/img/paypal.svg";
+import {hover} from "@testing-library/user-event/dist/hover";
 
-const WebFeedback:React.FC = () => {
+const WebFeedback: React.FC = () => {
     const OPTIONS = [
         {value: '100 feedback', label: '100 feedback'},
         {value: '200 feedback', label: '200 feedback'},
@@ -38,7 +39,8 @@ const WebFeedback:React.FC = () => {
                         <span className='text-color'>Add Balance</span>
                     </Col>
                     <Col span={10} offset={8} style={{paddingTop: '10px', paddingBottom: '10px'}}>
-                        <SelectComponent style={{width: '100%', borderRadius: '0'}} options={OPTIONS} defaultValue='100 feedback'/>
+                        <SelectComponent style={{width: '100%', borderRadius: '0'}} options={OPTIONS}
+                                         defaultValue='100 feedback'/>
                     </Col>
                 </Row>
                 <Row>
@@ -47,12 +49,15 @@ const WebFeedback:React.FC = () => {
                                                                                                        height='100%'/></Col>
 
                     <Col span={5} style={{paddingTop: '10px', paddingBottom: '10px'}}>
-                        <BtnComponent text='Purchase' style={{
+                        <BtnComponent  style={{
                             backgroundColor: '#335c9a',
                             float: 'right',
                             borderRadius: '0',
                             color: '#fff'
-                        }} type='text'/>
+                        }}type='text'
+                                      text={
+                            <a href='https://www.sandbox.paypal.com/checkoutnow?token=1NL41385M5066774S' target='_blank' >Purchase</a>}
+                        />
                     </Col>
                 </Row>
             </Form>

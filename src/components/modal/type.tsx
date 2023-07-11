@@ -3,7 +3,7 @@ interface ModalInterface {
     content?: any;
     cancel?: (e: React.MouseEvent<HTMLElement>) => void,
     width?: string,
-    title?: string,
+    title?: any,
 }
 
 export default ModalInterface;

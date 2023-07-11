@@ -15,7 +15,9 @@ const SmsBalance: React.FC = () => {
         setShow(true)
     }
 
+
     return (
+
         <div style={{backgroundColor: "#fff", padding: '0 20px', border: '1px solid rgba(0,0,0,.1)'}}>
             <Row style={{
                 borderBottom: '1px solid rgba(0,0,0,.1)',
@@ -46,13 +48,22 @@ const SmsBalance: React.FC = () => {
                             float: 'right',
                             borderRadius: '0',
                             color: '#fff'
-                        }} type='text'/>
+                        }} htmlType='submit'
+                        />
                     </Col>
                 </Row>
             </Form>
-            <ModalComponent show={show} width='800px' cancel={() => {
-                setShow(false)
-            }} content={<SmsPricing/>}/>
+            <ModalComponent show={show} width='800px'
+                            title={<div style={{
+                                height: '30px',
+                                backgroundColor: '#335c9a',
+                                color: "white",
+                                padding: '10px 10px'
+                            }}>
+                                SMS Pricing</div>}
+                            cancel={() => {
+                                setShow(false)
+                            }} content={<SmsPricing/>}/>
         </div>
     )
 }

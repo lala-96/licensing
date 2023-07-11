@@ -4,8 +4,8 @@ import SmsBalance from "../Sms";
 import WebFeedback from "../WebFeedback";
 import './main-style.css';
 import ModalComponent from "../../components/modal";
-import DviceComponent from "../device";
-import AboutCompany from "../aboutCompany";
+import DviceComponent from "../deviceMain/device";
+import AboutCompany from "../about/aboutCompany";
 import PaymentHistory from "../paymentHistory";
 
 const Main = () => {

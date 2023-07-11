@@ -8,6 +8,36 @@ import feedback from '../../assets/img/feedback.svg'
 
 const PaymentHistory: React.FC = () => {
     const [paymentList, setPaymentList] = useState<any[]>([]);
+    // const [url,setUrl] =useState<string>('')
+    const getLink = () => {
+        axios.get('https://apinew.testqmeter.net/api/v1/license/invoice/feedback/327/',
+            {
+                headers: {
+                    'Authorization': `${token}`
+                }
+            }
+        ).then((data) => {
+            console.log('file data  ', data.data);
+            const url = data.data.file
+            const link = document.createElement("a")
+            const currentDate = new Date()
+                .toLocaleDateString("en-GB")
+                .replace(/\//g, "-")
+
+            link.href = url
+            link.download = `Device history for ${currentDate}`
+
+            document.body.appendChild(link)
+            link.click()
+
+            document.body.removeChild(link)
+            URL.revokeObjectURL(url)
+
+
+        })
+    }
+
+    // console.log('setLink = ', url)
     const columns: any = [
         {
             title: '#',
@@ -66,8 +96,8 @@ const PaymentHistory: React.FC = () => {
             width: '8%',
             ellipsis: true,
             align: 'center',
-            render:(text:string, record:any,index:number)=> <Tag color='#6ab04c'>Paid</Tag>
-},
+            render: (text: string, record: any, index: number) => <Tag color='#6ab04c'>Paid</Tag>
+        },
         {
             title: 'Actions',
             dataIndex: '',
@@ -81,12 +111,13 @@ const PaymentHistory: React.FC = () => {
                 borderRadius: '0',
                 outline: 'none',
                 border: 'none'
-            }}>
+            }} onClick={getLink}
+            >
                 Download invoice</Button>
         },
     ];
 
-    const token = 'Token a711ed81da955ba5577ccff08295fd7a5638a64df88678699c65a1a77af8556b';
+    const token = 'Token 05d852a833f2d5c3c9b2133d8fd3eae77b30b9333eb32919d03bfaccf99a84f9';
 
     useEffect(() => {
         axios.get('https://apinew.testqmeter.net/api/v1/license/all-history/?page=1&page_size=20&search=', {
@@ -101,7 +132,7 @@ const PaymentHistory: React.FC = () => {
 
     return (
         <div style={{backgroundColor: "#fff", padding: '0 20px', border: '1px solid rgba(0,0,0,.1)'}}>
-            <Table pagination={false} columns={columns} dataSource={paymentList} />
+            <Table pagination={false} columns={columns} dataSource={paymentList}/>
         </div>
 
     )

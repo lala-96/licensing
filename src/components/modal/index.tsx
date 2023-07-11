@@ -1,9 +1,7 @@
 import React from "react";
-import BtnComponent from "../button";
 import {Modal} from "antd";
-import {useState} from "react";
 import ModalInterface from "./type";
-import SmsPricing from "../../features/SmsPricing/ined";
+import './style.css';
 
 
 const ModalComponent: React.FC<ModalInterface> = (props) => {
@@ -11,7 +9,7 @@ const ModalComponent: React.FC<ModalInterface> = (props) => {
 
     return (
         <>
-            <Modal title={props.title} open={props.show} onCancel={props.cancel} footer={[]} width={props.width}>
+            <Modal title={props.title} open={props.show} onCancel={props.cancel} width={props.width} footer={[]}>
                 {props.content}
             </Modal>
         </>
