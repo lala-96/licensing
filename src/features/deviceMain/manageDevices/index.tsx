@@ -6,11 +6,13 @@ import InterfaceManageDevices from "./type";
 import SelectComponent from "../../../components/select";
 import ModalComponent from "../../../components/modal";
 import qmeterService from "../../../apis/qmeterService";
+import ModalTitle from "../../modalTitle";
+import './style.css'
 
 
 const ManageDevices: React.FC<InterfaceManageDevices> = (props) => {
     const [dataList, setDataList] = useState<any[]>([]);
-   const [NameOptions, setNameOptions] = useState<any[]>();
+    const [NameOptions, setNameOptions] = useState<any[]>();
     const [branchOptions, setBranchOptions] = useState<any[]>();
     const columns: any = [
         {
@@ -179,69 +181,99 @@ const ManageDevices: React.FC<InterfaceManageDevices> = (props) => {
     }
 
     return (
-        <ModalComponent show={props.showModal} width='1200px' title={<div
-            style={{height: '30px', backgroundColor: '#335c9a', color: "white", padding: '10px 10px'}}>
-            Manage your online devices</div>}
-                        cancel={props.clickCancel}
-                        content={
-                            <div style={{minHeight: '600px', padding: '10px'}}>
-                                {props.isSpin || dataList.length === 0 ?
-                                    <Spin>
-                                        <Row>
-                                            <Col span={6}>
-                                                <span>Total count: 10 | Filtered count: 10</span>
-                                            </Col>
-                                            <Col span={6} offset={12}>
-                                                <Input placeholder="input search text" onChange={search}
-                                                       style={{width: 200, float: 'right'}}/>
-                                            </Col>
-                                        </Row>
-                                        <Table columns={columns}
-                                               dataSource={dataList}
-                                               scroll={{y: 600, x: 700}}
-                                               pagination={false}
-                                               onChange={onChange}/>
-                                    </Spin>
-                                    :
-                                    <>
-                                        <Row style={{paddingBottom: '10px'}}>
-                                            <Col span={6}>
-                                                <span>Total count: 10 | Filtered count: 10</span>
-                                            </Col>
-                                            <Col span={4} offset={14}>
-                                                <Input placeholder="input search text" onChange={search}
-                                                       style={{width: '100%', float: 'right'}}/>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col span={4} offset={4}>
-                                                <SelectComponent mode='tags' options={NameOptions}
-                                                                 placeholder='select names'
-                                                                 style={{width: '100%'}} onChange={searchForName}/>
-                                            </Col>
-                                            <Col span={4}>
-                                                <SelectComponent mode='tags' options={branchOptions}
-                                                                 placeholder='select branch'
-                                                                 style={{width: '100%'}} onChange={searchForBranch}/>
-                                            </Col>
-                                            <Col span={4} offset={4}>
-                                                <SelectComponent mode='tags' options={loginOptions}
-                                                                 placeholder='select status'
-                                                                 style={{width: '100%'}} onChange={searchForLogin}/>
-                                            </Col>
-                                            <Col span={4}>
-                                                <SelectComponent mode='tags' options={connectOptions}
-                                                                 placeholder='select connection'
-                                                                 style={{width: '100%'}} onChange={searchForConnect}/>
-                                            </Col>
-                                        </Row>
-                                        <Table columns={columns} dataSource={dataList} scroll={{y: 600, x: 700}}
-                                               pagination={false}
-                                               onChange={onChange}/>
-                                    </>
-                                }
-                            </div>
-                        }
+        <ModalComponent
+            show={props.showModal}
+            width='1200px'
+            title={
+                <ModalTitle text='Manage your online devices'/>
+            }
+            cancel={props.clickCancel}
+            content={
+                <div
+                    className='manage-device-main-div'
+                >
+                    {props.isSpin || dataList.length === 0 ?
+                        <Spin>
+                            <Row>
+                                <Col span={6}>
+                                    <span>Total count: 10 | Filtered count: 10</span>
+                                </Col>
+                                <Col span={6} offset={12}>
+                                    <Input
+                                        placeholder="input search text"
+                                        onChange={search}
+                                        className='search-input-style'
+                                    />
+                                </Col>
+                            </Row>
+                            <Table columns={columns}
+                                   dataSource={dataList}
+                                   scroll={{y: 600, x: 700}}
+                                   pagination={false}
+                                   onChange={onChange}/>
+                        </Spin>
+                        :
+                        <>
+                            <Row style={{paddingBottom: '10px'}}>
+                                <Col span={6}>
+                                    <span>Total count: 10 | Filtered count: 10</span>
+                                </Col>
+                                <Col
+                                    span={4}
+                                    offset={14}
+                                >
+                                    <Input
+                                        placeholder="input search text"
+                                        onChange={search}
+                                        className='search-input-style'
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col span={4} offset={4}>
+                                    <SelectComponent
+                                        mode='tags'
+                                        options={NameOptions}
+                                        placeholder='select names'
+                                        className='select-component-style'
+                                        onChange={searchForName}
+                                    />
+                                </Col>
+                                <Col span={4}>
+                                    <SelectComponent
+                                        mode='tags'
+                                        options={branchOptions}
+                                        placeholder='select branch'
+                                        className='select-component-style'
+                                        onChange={searchForBranch}/>
+                                </Col>
+                                <Col span={4} offset={4}>
+                                    <SelectComponent
+                                        mode='tags'
+                                        options={loginOptions}
+                                        placeholder='select status'
+                                        className='select-component-style'
+                                        onChange={searchForLogin}/>
+                                </Col>
+                                <Col span={4}>
+                                    <SelectComponent
+                                        mode='tags'
+                                        options={connectOptions}
+                                        placeholder='select connection'
+                                        className='select-component-style'
+                                        onChange={searchForConnect}/>
+                                </Col>
+                            </Row>
+                            <Table
+                                columns={columns}
+                                dataSource={dataList}
+                                scroll={{y: 600, x: 700}}
+                                pagination={false}
+                                onChange={onChange}/>
+                        </>
+                    }
+                </div>
+            }
         />
 
 

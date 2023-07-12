@@ -5,6 +5,7 @@ interface SelectInterface {
     options?: any
     placeholder?: string,
     onChange?: any,
+    className?:string
 }
 
 export default SelectInterface;

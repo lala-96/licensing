@@ -1,0 +1,29 @@
+.sms-pricing-main-div{
+    max-height: 400px;
+    overflow: auto;
+    padding: 10px;
+}
+.spin-div-style{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.spin-style{
+    margin: auto;
+}
+.search-input{
+    width: 200px;
+    float: right;
+}
+.col-style-sms{
+    padding: 20px;
+}
+
+.price-span{
+    float: right;
+    font-weight: bold;
+}
+.price-col{
+    padding: 10px 30px;
+}

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {Button, Table, Tag} from "antd";
-import axios from "axios";
 import device from '../../assets/img/phone.svg'
 import sms from '../../assets/img/sms.svg'
 import feedback from '../../assets/img/feedback.svg'
 import qmeterService from "../../apis/qmeterService";
+import './style.css'
 
 const PaymentHistory: React.FC = () => {
     const [paymentList, setPaymentList] = useState<any[]>([]);
@@ -89,7 +89,7 @@ const PaymentHistory: React.FC = () => {
         {
             title: 'Actions',
             dataIndex: '',
-            width: '8%',
+            width: '10%',
             ellipsis: true,
             align: 'center',
             render: (text: string, record: any, index: number) => <Button style={{
@@ -112,8 +112,14 @@ const PaymentHistory: React.FC = () => {
     }, []);
 
     return (
-        <div style={{backgroundColor: "#fff", padding: '0 20px', border: '1px solid rgba(0,0,0,.1)'}}>
-            <Table pagination={false} columns={columns} dataSource={paymentList}/>
+        <div
+            className='payment-div-style'
+        >
+            <Table
+                pagination={false}
+                columns={columns}
+                dataSource={paymentList}
+            />
         </div>
 
     )

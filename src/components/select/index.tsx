@@ -16,6 +16,7 @@ const SelectComponent: React.FC<SelectInterface> = (props) => {
             options={props.options}
             placeholder={props.placeholder}
             maxTagCount="responsive"
+            className={props.className}
         />
     )
 }

@@ -55,13 +55,6 @@ const UploadComponent: React.FC = () => {
             getBase64(info.file.originFileObj as RcFile, (url) => {
                 setLoading(false);
                 setImageUrl(url);
-                console.log('url== ', url)
-
-                const product = {logo: url}
-
-                // qmeterService.patch('/auth/company-edit/', product).then(respons => {
-                //     console.log('respons ', respons)
-                // })
             });
 
         }
@@ -83,7 +76,7 @@ const UploadComponent: React.FC = () => {
     return (
         <Upload
             name="avatar"
-            listType="picture-circle"
+            // listType="picture-circle"
             // className="avatar-uploader"
             showUploadList={false}
             action="https://www.mocky.io/v2/5cc8019d300000980a055e76"

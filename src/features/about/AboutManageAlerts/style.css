@@ -1,0 +1,18 @@
+.about-save-btn{
+    border-radius: 0;
+    margin:5px;
+    background-color: #335c9a;
+    color: white;
+    float: right;
+}
+
+.about-cancel-btn{
+    border: 1px solid black;
+    border-radius: 0;
+    margin: 0 5px;
+    float: right;
+}
+
+.about-modal-content{
+    padding: 10px;
+}

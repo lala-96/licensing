@@ -1,0 +1,10 @@
+.main-div-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.main-row-style{
+    padding: 20px;
+}

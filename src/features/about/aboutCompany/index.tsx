@@ -29,7 +29,11 @@ const AboutCompany: React.FC = () => {
         <div className='main-div'>
             <Row className='header-row'>
                 <Col span={8}>
-                    <span style={{color: '#555', fontWeight: '400'}}>About company</span>
+                    <span
+                        className='header-span'
+                    >
+                        About company
+                    </span>
                 </Col>
                 <Col span={4} offset={12}>
                     <BtnComponent
@@ -41,12 +45,14 @@ const AboutCompany: React.FC = () => {
                 </Col>
             </Row>
             <Row className='upload-row'>
-                <Col span={6} offset={9}>
+                <Col
+                    span={6}
+                    offset={9}
+                >
                     <UploadComponent/>
                 </Col>
-
             </Row>
-            <Row style={{borderBottom: '1px solid rgba(0,0,0,.1)'}}>
+            <Row className='row-border'>
                 <Col
                     span={4}
                     className='col-style'
@@ -61,25 +67,39 @@ const AboutCompany: React.FC = () => {
                 </Col>
             </Row>
             <Row
-                style={{borderBottom: '1px solid rgba(0,0,0,.1)'}}>
-                <Col span={4} className='col-style'>
+                className='row-border'
+            >
+                <Col
+                    span={4}
+                    className='col-style'>
                     <span>Sector:</span>
                 </Col>
-                <Col span={4} className='col-style'>
+                <Col
+                    span={4}
+                    className='col-style'>
                     <span>Public</span>
                 </Col>
             </Row>
             <Row
-                style={{borderBottom: '1px solid rgba(0,0,0,.1)', marginBottom: '38px'}}>
-                <Col span={4} className='col-style'>
+                className='last-row-border'
+            >
+                <Col
+                    span={4}
+                    className='col-style'>
                     <span>Country:</span>
                 </Col>
-                <Col span={4} className='col-style'>
+                <Col
+                    span={4}
+                    className='col-style'>
                     <span>Azerbaijan</span>
                 </Col>
             </Row>
-            <AboutManageAlerts default={defaultData} clickCancel={() => setShowModal(false)}
-                               setShow={() => setShowModal(false)} showModal={showModal}/>
+            <AboutManageAlerts
+                default={defaultData}
+                clickCancel={() => setShowModal(false)}
+                setShow={() => setShowModal(false)}
+                showModal={showModal}
+            />
 
         </div>
     )

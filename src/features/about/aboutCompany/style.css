@@ -23,19 +23,33 @@
     padding-bottom: 20px;
     padding-top: 10px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.col-style{
+.col-style {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.border-row{
-    display: inline-block;
-    borderBottom: 1px solid rgba(0,0,0,.1) !important;
-}
-.row-margin{
+
+.row-margin {
     margin-bottom: 38px;
 }
+
+.row-border {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.last-row-border {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    margin-bottom: 38px;
+}
+
+.header-span {
+    color: #555;
+    font-weight: 400;
+}
+
 /*span{*/
 /*    color: #65676b;*/
 /*}*/

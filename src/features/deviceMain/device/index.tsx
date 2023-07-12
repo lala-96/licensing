@@ -3,12 +3,11 @@ import {Col, Row} from "antd";
 import BtnComponent from "../../../components/button";
 import ManageDevices from "../manageDevices";
 import LicenseUpgrade from "../licenseUpgrade";
-import '../device/style.css'
+import './style.css'
 
 const DviceComponent: React.FC = () => {
     const [isLoading, setLoading] = useState<boolean>(false);
     const [modalType, setModalType] = useState<string>('')
-
     const [showModal, setShowModal] = useState<boolean>(false)
 
     const showDevice = () => {
@@ -25,32 +24,51 @@ const DviceComponent: React.FC = () => {
     }
     const list = DeviceInfoList.map(data =>
         <Row
-        style={{borderBottom: DeviceInfoList.indexOf(data) === (DeviceInfoList.length - 1) ? '' : '1px solid rgba(0,0,0,.1)'}}>
-        <Col span={12} className='col-style' >
-            <span className='span-text'>{data.name}</span>
-        </Col>
-        <Col span={12} className='col-style'>
-            <span className='span-position span-text'>{data.value}</span>
-        </Col>
-    </Row>)
+            style={{borderBottom: DeviceInfoList.indexOf(data) === (DeviceInfoList.length - 1) ? '' : '1px solid rgba(0,0,0,.1)'}}>
+            <Col
+                span={12}
+                className='col-style'>
+            <span
+                className='span-text'
+            >
+                {data.name}
+            </span>
+            </Col>
+            <Col
+                span={12}
+                className='col-style'>
+                <span
+                    className='span-position span-text'
+                >
+                    {data.value}
+                </span>
+            </Col>
+        </Row>
+    )
 
     return (
         <div className='main-div'>
-            <Row style={{
-                borderBottom: '1px solid rgba(0,0,0,.1)',
-                paddingTop: '10px',
-                paddingBottom: '20px',
-                marginBottom: '20px'
-            }}>
+            <Row
+                className='device-row'
+            >
                 <Col span={24}>
-                    <span className='header-span-style'>Device Licence information</span>
+                    <span
+                        className='header-span-style'
+                    >
+                        Device Licence information
+                    </span>
                 </Col>
             </Row>
             {list}
-            <Row style={{paddingBottom: '30px', marginTop: '47px', marginBottom: '30px'}}>
+            <Row
+                className='device-btn-row'
+            >
                 <Col span={6} offset={13}>
-                    <BtnComponent text='License in use' style={{borderRadius: '0'}} onClick={showDevice}
-                                  loading={isLoading}/>
+                    <BtnComponent
+                        text='License in use'
+                        className='license-btn'
+                        onClick={showDevice}
+                        loading={isLoading}/>
                 </Col>
                 <Col span={5}>
                     <BtnComponent
@@ -60,11 +78,17 @@ const DviceComponent: React.FC = () => {
                     />
                 </Col>
             </Row>
-
             {modalType === 'devices' ?
-                <ManageDevices isSpin={isLoading} clickCancel={() => setShowModal(false)} showModal={showModal}/>
+                <ManageDevices
+                    isSpin={isLoading}
+                    clickCancel={() => setShowModal(false)}
+                    showModal={showModal}
+                />
                 :
-                <LicenseUpgrade clickCancel={() => setShowModal(false)} showModal={showModal}/>
+                <LicenseUpgrade
+                    clickCancel={() => setShowModal(false)}
+                    showModal={showModal}
+                />
             }
         </div>
     )

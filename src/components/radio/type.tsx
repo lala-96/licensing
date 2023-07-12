@@ -1,7 +1,7 @@
 import type {RadioChangeEvent} from 'antd';
 
 interface RadioInterface {
-    onChange?: (e: RadioChangeEvent) => void,
+    onChange?: any
     value?: number,
     content?:any,
 }

@@ -1,3 +1,26 @@
+.sms-save-btn {
+    background-color: #335c9a;
+    float: right;
+    border-radius: 0;
+    color: #ffffff;
+}
+
+.sms-div-style{
+    background-color: white;
+    padding: 0 20px;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.sms-row {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.sms-col{
+    padding:10px 0;
+}
 .text-color {
     color: #65676b;
 }

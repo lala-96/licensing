@@ -1,3 +1,17 @@
+.device-row {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.device-btn-row {
+    padding-bottom: 30px;
+    margin-top: 47px;
+    margin-bottom: 30px;
+}
+
+
 .col-style {
     padding-bottom: 10px !important;
     padding-top: 10px !important;
@@ -17,13 +31,16 @@
     border: 1px solid rgba(0, 0, 0, .1);
 }
 
-.header-span-style{
+.header-span-style {
     color: #555;
-    font-weight: 400    ;
+    font-weight: 400;
 }
 
-.upgrade-btn{
+.upgrade-btn {
     border-radius: 0;
     background-color: #335c9a;
     color: white !important;
+}
+.license-btn{
+    border-radius: 0;
 }

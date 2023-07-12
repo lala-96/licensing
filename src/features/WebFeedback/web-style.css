@@ -1,11 +1,38 @@
 .text-color{
     color: #65676b;
 }
-.col-style{
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+.span-alig{
+    float: right;
 }
 
-.header-text-color{
+.web-col-style{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.web-text-color{
     color: #555;
+}
+
+.feedback-main-div{
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+}
+.feedback-row{
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding-top: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.select-comp-style{
+    width: 100%;
+    border-radius: 0;
+}
+
+.web-save-btn{
+    background-color: #335c9a;
+    float: right;
+    border-radius: 0;
+    color: white;
 }

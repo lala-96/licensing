@@ -4,6 +4,8 @@ import {useState} from "react";
 import InterfaceSmsPricing from "./type";
 import ModalComponent from "../../../components/modal";
 import qmeterService from "../../../apis/qmeterService";
+import ModalTitle from "../../modalTitle";
+import './style.css'
 
 const SmsPricing: React.FC<InterfaceSmsPricing> = (props) => {
     const [priceList, setPriceList] = useState<any[]>([]);
@@ -15,8 +17,8 @@ const SmsPricing: React.FC<InterfaceSmsPricing> = (props) => {
         })
     }, [])
 
-    const list = searchText != '' ? priceList.filter(item => item.name.includes(searchText)).map(dt => <Col span={12}
-                                                                                                            style={{padding: '10px 30px'}}>
+    const list = searchText !== '' ? priceList.filter(item => item.name.includes(searchText)).map(dt => <Col span={12}
+                                                                                                             style={{padding: '10px 30px'}}>
         <Row>
             <Col span={12}>
                 <span>
@@ -24,11 +26,18 @@ const SmsPricing: React.FC<InterfaceSmsPricing> = (props) => {
                 </span>
             </Col>
             <Col span={12}>
-                <span style={{float: 'right', fontWeight: 'bold'}}>{dt.price}</span>
+                <span
+                    className='price-span'
+                >
+                    {dt.price}
+                </span>
             </Col>
         </Row>
     </Col>) : priceList.map(data =>
-        <Col span={12} style={{padding: '10px 30px'}}>
+        <Col
+            span={12}
+            className='price-col'
+        >
             <Row>
                 <Col span={12}>
                 <span>
@@ -36,47 +45,61 @@ const SmsPricing: React.FC<InterfaceSmsPricing> = (props) => {
                 </span>
                 </Col>
                 <Col span={12}>
-                    <span style={{float: 'right', fontWeight: 'bold'}}>{data.price}</span>
+                    <span
+                        className='price-span'
+                    >
+                        {data.price}
+                    </span>
                 </Col>
             </Row>
         </Col>);
-
     const search = (e: any) => {
         setSearchText(e.target.value);
     };
 
     return (
-
-        <ModalComponent show={props.showModal} width='800px'
-                        title={<div style={{
-                            height: '30px',
-                            backgroundColor: '#335c9a',
-                            color: "white",
-                            padding: '10px 10px'
-                        }}>
-                            SMS Pricing</div>}
-                        cancel={props.clickCancel}
-                        content={
-                            <div style={{maxHeight: '400px', overflow: 'auto', padding: '10px',}}>
-                                {priceList.length === 0 ?
-                                    <div style={{height: '100%', width: '100%', textAlign: 'center'}}>
-                                        <Spin tip="Loading" size="large" style={{margin: "auto"}}></Spin>
-                                    </div>
-                                    :
-                                    <>
-                                        <Row>
-                                            <Col style={{padding: '20px'}} span={24}>
-                                                <Input placeholder="input search text" onChange={search}
-                                                       style={{width: 200, float: 'right'}}/>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            {list}
-                                        </Row>
-                                    </>}
-                            </div>
-                        }/>
-
+        <ModalComponent
+            show={props.showModal}
+            width='800px'
+            title={<ModalTitle text='SMS Pricing'/>}
+            cancel={props.clickCancel}
+            content={
+                <div
+                    className='sms-pricing-main-div'
+                >
+                    {priceList.length === 0 ?
+                        <div
+                            className='spin-div-style'
+                        >
+                            <Spin
+                                tip="Loading"
+                                size="large"
+                                className='spin-style'
+                            >
+                            </Spin>
+                        </div>
+                        :
+                        <>
+                            <Row>
+                                <Col
+                                    span={24}
+                                    className='col-style-sms'
+                                >
+                                    <Input
+                                        placeholder="input search text"
+                                        onChange={search}
+                                        className='search-input'
+                                    />
+                                </Col>
+                            </Row>
+                            <Row>
+                                {list}
+                            </Row>
+                        </>
+                    }
+                </div>
+            }
+        />
     )
 }
 export default SmsPricing;
