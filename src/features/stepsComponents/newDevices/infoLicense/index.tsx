@@ -23,6 +23,7 @@ const InfoLicense: React.FC<InfoLicenseType> = (props) => {
     console.log('add list  ', addList)
     return (
         <div className='div-style'>
+            <span className='text'>You Almost Done !</span>
             <TableComponent columns={columns} dataSource={addList} bordered={true}/>
         </div>
 

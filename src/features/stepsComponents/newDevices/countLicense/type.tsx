@@ -1,4 +1,6 @@
 interface InterfaceCountLicense {
-    text?:string
+    text?: string
+    changeNumber?: any,
 }
+
 export default InterfaceCountLicense

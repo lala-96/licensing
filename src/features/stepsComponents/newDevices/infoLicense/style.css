@@ -1,3 +1,15 @@
-.div-style{
+.div-style {
+    height: inherit;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    margin: 20px 0;
+
+}
+
+.text {
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 20px;
 }

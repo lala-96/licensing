@@ -12,8 +12,8 @@ import LongOfLicense from "../../extendLicenses/longOfLicense";
 import SelectPackage from "../../stepsComponents/webBalance";
 
 const LicenseUpgrade: React.FC<InterfaceUpgrade> = (props) => {
-    const [radioValue, setRadioValue] = useState<number>(-1);
-
+    const [disable, setDisable] = useState<boolean>(true);
+    const [radioValue, setRadioValue] = useState<number>();
     const [count, setCount] = useState<number>(0)
 
     const licenseList = [{
@@ -49,6 +49,7 @@ const LicenseUpgrade: React.FC<InterfaceUpgrade> = (props) => {
         <InfoLicense/>
     ]
     const checkRadio = (e: RadioChangeEvent) => {
+        setDisable(false);
         setRadioValue(e.target.value);
         switch (e.target.value) {
             case 1:
@@ -108,59 +109,12 @@ const LicenseUpgrade: React.FC<InterfaceUpgrade> = (props) => {
                     {
                         title: 'third',
                         content: webBalance[1]
-                    },
-                    {
-                        title: 'fourth',
-                        content: webBalance[2]
                     }
                 ]);
                 setCount(webBalance.length + 1)
                 break
         }
-    }
-    console.log('radioValue  ', radioValue)
-
-    const choosSecondContent = () => {
-        switch (radioValue) {
-            case 1:
-                return addNewLicense[0]
-                break
-            case 2:
-                return extendCurrentLicense[0];
-                break
-            case 3:
-                return addExtendLicense[0];
-                break
-            case 4:
-                return webBalance[0];
-                break
-        }
-    }
-
-    const choosthirdContent = () => {
-        switch (radioValue) {
-            case 1:
-                return addNewLicense[1]
-                break
-            case 2:
-                return extendCurrentLicense[1];
-                break
-            case 3:
-                return addExtendLicense[1];
-                break
-            case 4:
-                return webBalance[1];
-                break
-        }
-    }
-
-    const choosfourthContent = () => {
-        switch (radioValue) {
-            case 3:
-                return addExtendLicense[2];
-                break
-        }
-    }
+    };
 
     const license = licenseList.map((item, index) =>
         <Radio
@@ -171,7 +125,7 @@ const LicenseUpgrade: React.FC<InterfaceUpgrade> = (props) => {
         </Radio>
     );
 
-    const firsContent =(radioValue:number)=>
+    const firsContent =
         <Row
             justify='center'
             align='middle'
@@ -181,7 +135,7 @@ const LicenseUpgrade: React.FC<InterfaceUpgrade> = (props) => {
                 className='main-div-style'
             >
                 <span>
-                    What do you want to do? {radioValue}
+                    What do you want to do?
                 </span>
                 <RadioComponent
                     content={license}
@@ -193,33 +147,16 @@ const LicenseUpgrade: React.FC<InterfaceUpgrade> = (props) => {
 
     const [steps, setSteps] = useState<any[]>([{
         title: 'First',
-        content: ()=>firsContent(radioValue)
-    },])
+        content: firsContent
+    }]);
 
     useEffect(() => {
-        console.log('tetstst')
+        steps[0] = {
+            title: 'First',
+            content: firsContent
+        }
         setSteps([...steps])
-    }, [radioValue])
-
-    //
-    // const steps = [
-    //     {
-    //         title: 'First',
-    //         content: firsContent
-    //     },
-    //     {
-    //         title: 'Second',
-    //         content: choosSecondContent()
-    //     },
-    //     {
-    //         title: 'Last',
-    //         content: choosthirdContent(),
-    //     },
-    //     {
-    //         title: 'Last4',
-    //         content: choosfourthContent(),
-    //     },
-    // ];
+    }, [radioValue]);
 
     return (
         <ModalComponent
@@ -231,6 +168,7 @@ const LicenseUpgrade: React.FC<InterfaceUpgrade> = (props) => {
                 <StepsModal
                     steps={steps}
                     count={count}
+                    disableBtn={disable}
                 />
             }
         />

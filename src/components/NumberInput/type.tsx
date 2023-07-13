@@ -1,9 +1,8 @@
 interface NumberInterface {
     min?: number;
     max?: number;
-    onChange?:any;
-    default?:any;
-    // onChange?: (e: React.FormEvent<HTMLInputElement>) => void
+    onChange?: any;
+    default?: any;
 }
 
 export default NumberInterface;

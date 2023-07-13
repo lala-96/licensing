@@ -1,6 +1,7 @@
 .steps-content{
-    height: 200px;
+    min-height: 200px;
     align-items: center;
+    margin: 20px 0;
 
 }
 

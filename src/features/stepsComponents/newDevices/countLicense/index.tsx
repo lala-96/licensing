@@ -5,6 +5,11 @@ import NumberInputComponent from "../../../../components/NumberInput";
 import InterfaceCountLicense from "./type";
 
 const CountLicense: React.FC<InterfaceCountLicense> = (props) => {
+
+
+    const getInputValue = (e: any) => {
+
+    }
     return (
         <Row
             justify='center'
@@ -17,7 +22,7 @@ const CountLicense: React.FC<InterfaceCountLicense> = (props) => {
                 <span>
                    {props.text}
                 </span>
-                <NumberInputComponent min={0} max={10}/>
+                <NumberInputComponent min={0} max={10} onChange={getInputValue}/>
             </div>
         </Row>
     )

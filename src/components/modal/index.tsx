@@ -9,7 +9,14 @@ const ModalComponent: React.FC<ModalInterface> = (props) => {
 
     return (
         <>
-            <Modal title={props.title} open={props.show} onCancel={props.cancel} width={props.width} footer={[]}>
+            <Modal
+                title={props.title}
+                open={props.show}
+                onCancel={props.cancel}
+                width={props.width}
+                className={props.className}
+                footer={[]}
+            >
                 {props.content}
             </Modal>
         </>
