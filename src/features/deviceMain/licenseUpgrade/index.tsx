@@ -32,7 +32,7 @@ const LicenseUpgrade: React.FC<InterfaceUpgrade> = (props) => {
     ];
 
     const addNewLicense = [
-        <CountLicense text=' What do you want to do?'/>,
+        <CountLicense text=' How many device license do you want to add ?'/>,
         <InfoLicense/>
     ];
     const extendCurrentLicense = [
@@ -134,7 +134,7 @@ const LicenseUpgrade: React.FC<InterfaceUpgrade> = (props) => {
             <div
                 className='main-div-style'
             >
-                <span>
+                <span className='header-text-style'>
                     What do you want to do?
                 </span>
                 <RadioComponent

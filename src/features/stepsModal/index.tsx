@@ -26,18 +26,25 @@ const StepsModal: React.FC<InteerfaceStepModal> = (props) => {
                     <span>stem {current + 1} of {props.count}</span>
                 </div>
                 <div>
-                    {/*{current < props.steps.length - 1 && (*/}
-                        <Button type="primary" onClick={() => next()} disabled={props.disableBtn}>
-                            Continue
-                        </Button>
-                    {/*)}*/}
+                    {current < props.steps.length - 1  && (
+                    <Button
+                        type="primary"
+                        onClick={() => next()}
+                        disabled={props.disableBtn}
+                    >
+                        Continue
+                    </Button>
+                    )}
                     {/*{current === props.steps.length - 1 && (*/}
                     {/*    <Button type="primary" onClick={() => message.success('Processing complete!')}>*/}
                     {/*        Done*/}
                     {/*    </Button>*/}
                     {/*)}*/}
                     {current > 0 && current < props.steps.length - 1 && (
-                        <Button style={{margin: '0 8px'}} onClick={() => prev()}>
+                        <Button
+                            style={{margin: '0 8px'}}
+                            onClick={() => prev()}
+                        >
                             Previous
                         </Button>
                     )}

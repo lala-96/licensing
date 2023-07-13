@@ -2,9 +2,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 20px;
 }
 
 .main-row-style{
     padding: 20px;
+}
+
+.input-div{
+    width: 50%;
 }

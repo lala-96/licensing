@@ -1,10 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
-import paramsReducer from '../features/todo/params'
+import paramsReducer from './params'
 
 export const store = configureStore(
     {
         reducer: {
-            params: paramsReducer,
+            params:paramsReducer,
         }
     }
 );

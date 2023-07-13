@@ -3,12 +3,14 @@ import {Row} from "antd";
 import './style.css'
 import NumberInputComponent from "../../../../components/NumberInput";
 import InterfaceCountLicense from "./type";
+import {sendParam} from "../../../../store/params";
+import {useDispatch} from "react-redux";
 
 const CountLicense: React.FC<InterfaceCountLicense> = (props) => {
+    const dispatch = useDispatch();
 
-
-    const getInputValue = (e: any) => {
-
+    const getInputValue = (value: any) => {
+        dispatch(sendParam(value));
     }
     return (
         <Row
@@ -19,10 +21,12 @@ const CountLicense: React.FC<InterfaceCountLicense> = (props) => {
             <div
                 className='main-div-style'
             >
-                <span>
+                <span className='header-text-style'>
                    {props.text}
                 </span>
-                <NumberInputComponent min={0} max={10} onChange={getInputValue}/>
+                <div className='input-div'>
+                    <NumberInputComponent min={0} max={10} onChange={getInputValue} default={1}/>
+                </div>
             </div>
         </Row>
     )

@@ -29,7 +29,7 @@ const ManageDevices: React.FC<InterfaceManageDevices> = (props) => {
             dataIndex: 'name',
             sorter: {
                 compare: (a: any, b: any) => a.name - b.name,
-                multiple: 3,
+
             },
             render: (name: any) => <span style={{fontSize: '12px'}}>{name}</span>,
             ellipsis: true,
@@ -39,7 +39,7 @@ const ManageDevices: React.FC<InterfaceManageDevices> = (props) => {
             dataIndex: 'username',
             sorter: {
                 compare: (a: any, b: any) => a.username - b.username,
-                multiple: 2,
+
             },
             render: (username: any) => <span style={{fontSize: '12px'}}>{username}</span>,
         },
@@ -48,7 +48,7 @@ const ManageDevices: React.FC<InterfaceManageDevices> = (props) => {
             dataIndex: 'branch',
             sorter: {
                 compare: (a: any, b: any) => a.branch - b.branch,
-                multiple: 1,
+
             },
             render: (branch: any) => <span style={{fontSize: '12px'}}>{branch}</span>
         },
@@ -57,7 +57,7 @@ const ManageDevices: React.FC<InterfaceManageDevices> = (props) => {
             dataIndex: 'last_login',
             sorter: {
                 compare: (a: any, b: any) => a.last_login - b.last_login,
-                multiple: 1,
+
             },
             ellipsis: true,
             render: (date: any) => <span style={{fontSize: '12px'}}>{date}</span>
