@@ -8,7 +8,7 @@ const TableComponent: React.FC<TableInterface> = (props) => {
         console.log('params', pagination, filters, sorter, extra);
     };
     return (
-        <Table columns={props.columns} dataSource={props.dataSource} scroll={{y: 600, x: 700}} pagination={false}
+        <Table columns={props.columns} dataSource={props.dataSource} scroll={props.scroll} pagination={false} bordered={props.bordered}
                onChange={onChange}/>
     )
 }

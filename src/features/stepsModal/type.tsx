@@ -1,4 +1,5 @@
 interface InteerfaceStepModal {
-    steps?:any
+    steps?:any,
+    count?:number
 }
 export default InteerfaceStepModal;

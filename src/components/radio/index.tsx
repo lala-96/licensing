@@ -5,7 +5,7 @@ import RadioInterface from "./type";
 
 const RadioComponent: React.FC<RadioInterface> = (props) => {
    return (
-        <Radio.Group onChange={props.onChange} value={props.value}>
+        <Radio.Group onChange={props.onChange} value={props.value} defaultValue={props.defaultValue} >
             <Space direction="vertical">
                 {props.content}
                 {/*<Radio value={1}>Option A</Radio>*/}
